@@ -393,6 +393,7 @@ describe('OVM_L1CrossDomainMessenger', () => {
           OVM_L1CrossDomainMessenger2.allowMessage(keccak256(calldata))
         ).to.be.revertedWith('Ownable: caller is not the owner')
       })
+
       it('should revert if the message is blocked', async () => {
         await OVM_L1CrossDomainMessenger.blockMessage(keccak256(calldata))
 
@@ -406,6 +407,7 @@ describe('OVM_L1CrossDomainMessenger', () => {
           )
         ).to.be.revertedWith('Provided message has been blocked.')
       })
+
       it('should succeed if the message is blocked, then unblocked', async () => {
         await OVM_L1CrossDomainMessenger.blockMessage(keccak256(calldata))
 
@@ -432,6 +434,7 @@ describe('OVM_L1CrossDomainMessenger', () => {
         ).to.not.be.reverted
       })
     })
+
     describe('onlyRelayer', () => {
       it('when the OVM_L2MessageRelayer address is set, should revert if called by a different account', async () => {
         // set to a random NON-ZERO address
