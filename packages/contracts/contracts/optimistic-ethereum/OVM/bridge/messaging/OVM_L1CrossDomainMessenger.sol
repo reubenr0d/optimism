@@ -30,6 +30,18 @@ import { Abs_BaseCrossDomainMessenger } from "./Abs_BaseCrossDomainMessenger.sol
  */
 contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, Abs_BaseCrossDomainMessenger, Lib_AddressResolver, Ownable, Pausable {
 
+    /**********
+     * Events *
+     **********/
+
+    event MessageBlocked(
+        bytes32 indexed _xDomainCalldataHash
+    );
+
+    event MessageAllowed(
+        bytes32 indexed _xDomainCalldataHash
+    );
+
     /**********************
      * Contract Variables *
      **********************/
@@ -108,6 +120,7 @@ contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, Abs_BaseCros
         onlyOwner
     {
         blockedMessages[_xDomainCalldataHash] = true;
+        emit MessageBlocked(_xDomainCalldataHash);
     }
 
     /**
@@ -121,6 +134,7 @@ contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, Abs_BaseCros
         onlyOwner
     {
         blockedMessages[_xDomainCalldataHash] = false;
+        emit MessageAllowed(_xDomainCalldataHash);
     }
 
     /**
