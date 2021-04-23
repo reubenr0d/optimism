@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.8
+
+### Patch Changes
+
+- ea4041b: Removed two old mock contracts
+- 5f376ee: Adds config parsing to the deploy script for local deployments
+- eef1df4: Minor update to package.json to correctly export typechain artifacts"
+- 572dcbc: Add an extra event to messenger contracts to emit when a message is unsuccessfully relayed
+- 6014ec0: Adds OVM_Sequencer and Deployer to the addresses.json output file
+
 ## 0.2.7
 
 ### Patch Changes
